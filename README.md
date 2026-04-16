@@ -1,73 +1,141 @@
-RIT Project – LLM-Based Program Repair & Hint Generation
+🤖 Prompt Engineering & LLM Fine-Tuning Project
+🧠 Two-Part System: Prompt-Based Reasoning + Model Fine-Tuning Pipeline
 
 
-Overview
-This project is part of an RIT coursework assignment focused on automatic program repair and hint generation using Large Language Models (LLMs). The system evaluates student-style programming submissions, either attempting to repair incorrect code or generate helpful hints, and then measures performance across a dataset.
-The project supports running evaluations in two modes:
-Repair mode – Automatically fixes incorrect programs
-Hint mode – Generates instructional hints without revealing full solutions
+
+🚀 Overview
+This project explores two complementary approaches to working with Large Language Models (LLMs):
 
 
-Project Structure
-.
-├── project_part1_repair.py        # LLM-based program repair logic
-├── project_part1_hint.py          # LLM-based hint generation logic
-├── project_part1_prompts.py       # Prompt templates for LLM interaction
-├── project_part1_evaluate.py      # Dataset-level evaluation pipeline
-├── project_part1_datasets.zip     # Input datasets for evaluation
-├── project_part1_transcripts/     # Saved LLM interaction transcripts (auto-generated)
-└── project_part1_evaluation_results/ # Evaluation outputs (auto-generated)
+🔹 Part 1: Prompt Engineering System
+Prompt design for reasoning tasks
+Evaluation of model responses
+Hint-based prompting strategies
+Repair mechanisms for improving outputs
+
+🔹 Part 2: Fine-Tuning Pipeline
+Dataset assembly for supervised training
+Model fine-tuning workflow
+Evaluation of fine-tuned performance on structured tasks
+
+The project demonstrates both:
+
+👉 Prompt-level control of LLMs
+👉 Model-level adaptation via fine-tuning
+
+🧠 Key Objectives
+Understand how prompt design impacts LLM reasoning
+Build structured evaluation pipelines for LLM outputs
+Construct datasets for supervised fine-tuning
+Train and evaluate domain-specific LLM behavior
+Compare prompt-based vs fine-tuned performance
+
+📁 Project Structure
+</> Markdown
+
+text "
+
+📦 Project Root
+
+├── README.md
+├── requirements.txt
+├── project_part1_datasets.zip
+
+# =========================
+# PART 1 - PROMPT ENGINEERING
+# =========================
+├── project_part1_prompts.py        # Prompt templates for reasoning tasks
+├── project_part1_hint.py           # Hint-based prompt enhancement logic
+├── project_part1_repair.py         # Output correction / repair strategies
+├── project_part1_evaluate.py       # Evaluation of prompt outputs
+
+# =========================
+# PART 2 - FINE TUNING PIPELINE
+# =========================
+├── project_part2_assembeld_dataset.py     # Dataset construction pipeline
+├── project_part2_dataset_training_raw.json # Training dataset (raw format)
+├── project_part2_finetuning.py            # Model fine-tuning pipeline
+├── project_part2_evaluate.py              # Evaluation of fine-tuned model
 
 
-Key Components
-Repair Agent
-Uses an LLM to automatically correct faulty programs based on compiler feedback and distance metrics.
-Hint Agent
-Generates pedagogical hints instead of full solutions, designed to guide students toward fixing errors themselves.
+
+"
+
+
+
+🧪 Part 1: Prompt Engineering System
+This module focuses on controlling LLM behavior without modifying model weights.
+Components:
+Prompt Templates
+Structured prompts for task completion and reasoning
+Hint System
+Adds intermediate guidance to improve model reasoning
+Repair Module
+Fixes or improves invalid/low-quality model outputs
+Evaluation Module
+Measures response quality and correctness
+
+👉 Goal: Improve model performance purely through prompt design
+
+🏗️ Part 2: Fine-Tuning Pipeline
+
+This module focuses on adapting the model itself using training data.
+Components:
+Dataset Assembly
+Converts raw structured data into training format
+Training Dataset
+JSON-based supervised fine-tuning dataset
+Fine-Tuning Script
+Trains model on domain-specific tasks
 Evaluation Pipeline
-Compiles student submissions
-Applies repair or hint logic
-Computes distance-based correctness metrics
-Saves detailed transcripts and results for analysis
+Compares pre-trained vs fine-tuned performance
+
+👉 Goal: Improve model behavior through parameter updates
+
+⚙️ Tech Stack
+
+Python 3.10+
+NLP / LLM Concepts
+Transformer-based models
+JSON structured datasets
+Prompt Engineering techniques
+Fine-tuning pipelines (HuggingFace-style workflow)
+
+🔬 Key Learnings
+
+Difference between prompt engineering vs fine-tuning
+How structured prompts influence LLM reasoning
+Dataset construction for supervised learning
+Evaluation strategies for generative models
+Trade-offs between inference-time vs training-time optimization
 
 
-Supported Models
-The project is designed to work with different LLM backends. Model selection is configurable in project_part1_evaluate.py.
+📊 System Workflow
+🔹 Part 1 (Prompt System)
+
+Input → Prompt Design → LLM Response → Hint/Repair → Evaluation
+
+🔹 Part 2 (Fine-Tuning)
+
+Raw Data → Dataset Construction → Fine-Tuning → Evaluation → Improved Model
 
 
-Example:
-model_selected = "gpt-4o-mini"
-HuggingFace-hosted models (e.g. Phi-3) are also supported.
+📈 Results
 
-How to Run
-Unzip the dataset
-unzip project_part1_datasets.zip
+Prompt engineering significantly improves baseline LLM performance without training
+Fine-tuning provides stronger task-specific consistency
+Hybrid approach (prompt + fine-tuning) gives best results in structured tasks
 
-Set the mode
-In project_part1_evaluate.py, choose:
-mode = "repair"  # or "hint"
+🚀 Future Improvements
+Add transformer-based evaluation metrics (BLEU, ROUGE, BERTScore)
+Integrate LangChain / LangGraph for agent workflows
+Expand dataset for multi-task learning
+Add experiment tracking (MLflow / Weights & Biases)
+Deploy inference API (FastAPI / HuggingFace Spaces)
 
-Run evaluation
-python project_part1_evaluate.py
-
-View results
-Evaluation metrics: project_part1_evaluation_results/
-LLM transcripts: project_part1_transcripts/transcript.json
-
-Outputs
-Corrected programs or generated hints
-Compiler success/failure results
-Distance-based correctness metrics
-Full LLM interaction logs for debugging and analysis
+👨‍💻 Author
+Abhijeet Malik
+🎓 B.Sc. Data Science & Artificial Intelligence
+University of the Saarland, Germany
 
 
-Educational Goals
-Explore the effectiveness of LLMs in programming education
-Compare repair vs. hint-based feedback strategies
-Analyze automated grading and feedback systems
-
-
-Notes
-This project is intended for educational and research purposes
-Transcripts are saved automatically and may grow large
-Ensure your environment has access to the selected LLM backend
